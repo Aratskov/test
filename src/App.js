@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import Layout from './components/Layout/Layout';
+import { Route, Routes } from 'react-router-dom';
+import Sales from './pages/Sales';
+import Invoices from './components/Invoices/Invoices';
+import InvoicesDetail from './components/InvoicesDetail/InvoicesDetail';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+      <Route path="dashboard" element={<div>Dashboard</div>}/>
+      <Route path="sales" element={<Sales/>}>
+      <Route path="analytics" element={<div>Analytics</div>}/>
+      <Route path="invoices" element={<Invoices/>}>
+      <Route path=":invoiceId" element = {<InvoicesDetail/>}/>
+      </Route>
+      <Route path="deposits" element={<div>Deposits</div>}/>
+      </Route>
+      <Route path="reports" element={<div>Reports</div>}/>
+      <Route path="feedback" element={<div>Feedback</div>}/>
+      <Route path="customers" element={<div>Customers</div>}/>
+      </Route>
+    </Routes>
   );
 }
 
